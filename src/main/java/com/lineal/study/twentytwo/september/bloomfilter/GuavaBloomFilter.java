@@ -26,5 +26,6 @@ public class GuavaBloomFilter {
         System.out.println(integerBloomFilter.mightContain(5));
         System.out.println(integerBloomFilter.mightContain(50000000));
         System.out.println(integerBloomFilter.mightContain(30000000));
+        System.out.println(integerBloomFilter.mightContain(200));
     }
 }
