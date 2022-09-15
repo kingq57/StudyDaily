@@ -25,6 +25,7 @@ public class SelectTest {
     public void selectList(){
         LambdaQueryWrapper<User> queryWrapper = new LambdaQueryWrapper<>();
 //        queryWrapper.eq(User::getId, 1L);
-        userMapper.selectList(queryWrapper);
+
+        userMapper.selectList(queryWrapper).forEach(System.out::println);
     }
 }
