@@ -1,8 +1,6 @@
-package com.lineal.study.twentytwo.september.mybatisplus.pojo;
+package com.lineal.studydaily.twentytwo.september.mybatisplus.pojo;
 
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;
 
 import java.time.LocalDateTime;
@@ -16,12 +14,13 @@ import java.time.LocalDateTime;
 @Data
 @TableName("user")
 public class User {
+    @TableId(type = IdType.ASSIGN_ID)
     private Long id;
     private String name;
     private Integer age;
     private String email;
-    @TableField(value = "create_time", fill = FieldFill.INSERT)
+    @TableField(fill = FieldFill.INSERT)
     private LocalDateTime createTime;
-    @TableField(value = "update_time", fill = FieldFill.INSERT_UPDATE )
+    @TableField(fill = FieldFill.INSERT_UPDATE )
     private LocalDateTime updateTime;
 }

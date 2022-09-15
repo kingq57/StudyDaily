@@ -1,7 +1,9 @@
-package com.lineal.study.twentytwo.september.mybatisplus.handler;
+package com.lineal.studydaily.twentytwo.september.mybatisplus.handler;
 
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.reflection.MetaObject;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 
@@ -11,6 +13,9 @@ import java.time.LocalDateTime;
  * @date: 2022/9/14
  * @version: 1.0
  **/
+
+@Component
+@Slf4j
 public class MyMetaObjectHandler implements MetaObjectHandler {
     @Override
     public void insertFill(MetaObject metaObject) {

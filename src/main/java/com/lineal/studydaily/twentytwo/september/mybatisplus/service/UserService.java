@@ -1,4 +1,4 @@
-package com.lineal.study.twentytwo.september.mybatisplus.service;
+package com.lineal.studydaily.twentytwo.september.mybatisplus.service;
 
 /**
  * @description:

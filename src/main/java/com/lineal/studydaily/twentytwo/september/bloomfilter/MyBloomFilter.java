@@ -1,4 +1,4 @@
-package com.lineal.study.twentytwo.september.bloomfilter;
+package com.lineal.studydaily.twentytwo.september.bloomfilter;
 
 
 import java.util.BitSet;
