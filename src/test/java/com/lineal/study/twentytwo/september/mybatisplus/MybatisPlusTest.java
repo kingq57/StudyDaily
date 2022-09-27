@@ -1,9 +1,10 @@
 package com.lineal.study.twentytwo.september.mybatisplus;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
+import com.lineal.studydaily.StudyDailyApplication;
 import com.lineal.studydaily.twentytwo.september.mybatisplus.mapper.UserMapper;
 import com.lineal.studydaily.twentytwo.september.mybatisplus.pojo.User;
-import com.lineal.studydaily.StudyDailyApplication;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -34,10 +35,36 @@ public class MybatisPlusTest {
     public void addList(){
         for (int i = 0; i < 5; i++) {
             User user = new User();
-            user.setName("MangOs" + i);
+            user.setName("lineal" + i);
             user.setAge(i);
-            user.setEmail("xxxx" + i + "@mangos.com");
+            user.setEmail("xxxx" + i + "@lineal.com");
             userMapper.insert(user);
         }
+    }
+
+    @Test
+    public void updateList(){
+        for (int i = 0; i < 5; i++) {
+            LambdaUpdateWrapper<User> updateWrapper = new LambdaUpdateWrapper<>();
+            updateWrapper.eq(User::getEmail, "xxxx" + i + "@lineal.com");
+            updateWrapper.set(User::getName, "lineal" + i).set(User::getEmail, "xxxx" + i + "@lineal.com");
+            // 这里如果想让自动填充生效，update的第一个参数不能传null，需要传对应的实体类自动填充才会生效
+            userMapper.update(new User(), updateWrapper);
+        }
+    }
+
+    @Test
+    /**
+     * @description 逻辑删除测试
+     * @author lineal
+     * @date 2022/9/16
+     * @param
+     * @return void
+     */
+    public void deletedTest(){
+        LambdaQueryWrapper<User> updateWrapper = new LambdaQueryWrapper<>();
+        updateWrapper.eq(User::getEmail, "xxxx" + 0 + "@lineal.com");
+        // 这里如果想让自动填充生效，update的第一个参数不能传null，需要传对应的实体类自动填充才会生效
+        userMapper.delete(updateWrapper);
     }
 }

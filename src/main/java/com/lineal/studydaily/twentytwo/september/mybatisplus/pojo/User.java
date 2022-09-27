@@ -23,4 +23,7 @@ public class User {
     private LocalDateTime createTime;
     @TableField(fill = FieldFill.INSERT_UPDATE )
     private LocalDateTime updateTime;
+    @TableLogic
+    @TableField(value = "is_deleted")
+    private Boolean deleted; //0 false 未删除  1 true 已删除
 }

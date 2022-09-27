@@ -7,11 +7,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @author: KingQqq57
  * @description: MybatisPlus配置类
- * @date: 2022/9/25 21:56
+ * @author: lineal
+ * @date: 2022/9/16
  * @version: 1.0
- */
+ **/
+
 @Configuration
 public class MybatisPlusConfig {
 
