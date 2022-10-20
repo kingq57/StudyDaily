@@ -19,12 +19,30 @@ import java.time.LocalDateTime;
 public class MyMetaObjectHandler implements MetaObjectHandler {
     @Override
     public void insertFill(MetaObject metaObject) {
-        this.strictInsertFill(metaObject, "createTime", LocalDateTime.class, LocalDateTime.now());
-        this.strictInsertFill(metaObject, "updateTime", LocalDateTime.class, LocalDateTime.now());
+        final Object createTime = this.getFieldValByName("createTime", metaObject);
+        // 判断要填充的字段是否有值
+        if (createTime == null){
+            // 判断要自动填充的字段是否在当前对象中
+            if (metaObject.hasSetter("createTime")){
+                this.strictInsertFill(metaObject, "createTime", LocalDateTime.class, LocalDateTime.now());
+            }
+        }
+
+        log.info("updateTime在实体类中是否存在" +metaObject.hasSetter("updateTime"));
+        if (metaObject.hasSetter("updateTime")){
+            this.strictInsertFill(metaObject, "updateTime", LocalDateTime.class, LocalDateTime.now());
+        }
+        final boolean a = metaObject.hasSetter("a");
+        log.info("a在实体类中是否存在" +a);
+        if (a){
+            log.info("**************************************************");
+        }
     }
 
     @Override
     public void updateFill(MetaObject metaObject) {
-        this.strictInsertFill(metaObject, "updateTime", LocalDateTime.class, LocalDateTime.now());
+        if (metaObject.hasSetter("updateTime")){
+            this.strictInsertFill(metaObject, "updateTime", LocalDateTime.class, LocalDateTime.now());
+        }
     }
 }
