@@ -20,9 +20,8 @@ public class LambdaTest02 {
 //                strings.add("1");
 //            }
 //        };
-
 //        System.out.println( typeConvert((Function<String, Integer>) Integer::valueOf));
-        foreachArr(System.out::println, new int[]{1, 2, 5, 8, 88});
+        foreachArr(value -> System.out.println(value+1), new int[]{1, 2, 5, 8, 88});
     }
 
 
