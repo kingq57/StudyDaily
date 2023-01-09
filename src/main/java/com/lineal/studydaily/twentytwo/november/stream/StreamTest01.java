@@ -1,8 +1,6 @@
 package com.lineal.studydaily.twentytwo.november.stream;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * @description: Stream流测试类01
@@ -23,7 +21,27 @@ public class StreamTest01 {
 
 //        testFlatMap01();
 
-        testFlatMap02();
+//        testFlatMap02();
+        
+        testMaxAndMin();
+    }
+    
+    
+    /** 
+     * @description 分别获取这些作家的所出书记的最高分和最低分
+     * @author lineal
+     * @date 2023/1/9 
+     * @param 
+     * @return void
+     **/
+    private static void testMaxAndMin() {
+        List<Author> authors = getAuthors();
+
+        final Optional<Book> max = authors.stream()
+                .flatMap(a -> a.getBooks().stream())
+                .distinct()
+                .max(Comparator.comparingInt(Book::getScore));
+        System.out.println(max.get().getScore());
     }
 
     /**

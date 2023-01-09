@@ -6,7 +6,9 @@ import com.lineal.studydaily.StudyDailyApplication;
 import com.lineal.studydaily.twentytwo.september.mybatisplus.mapper.UserMapper;
 import com.lineal.studydaily.twentytwo.september.mybatisplus.pojo.User;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.annotation.Resource;
 
@@ -22,6 +24,9 @@ import javax.annotation.Resource;
 public class MybatisPlusTest {
     @Resource
     UserMapper userMapper;
+    @Autowired
+    JdbcTemplate jdbcTemplate;
+
 
     @Test
     public void selectList(){
@@ -67,4 +72,13 @@ public class MybatisPlusTest {
         // 这里如果想让自动填充生效，update的第一个参数不能传null，需要传对应的实体类自动填充才会生效
         userMapper.delete(updateWrapper);
     }
+
+    @Test
+    public void jdbcTemplateTest(){
+        String sql = "select count(*) from user where name = ? \n and id = ? \n";
+        Integer integer = jdbcTemplate.queryForObject(sql, new Object[]{"Tom", 3}, Integer.class);
+        System.out.println("jdbcTest");
+        System.out.println(integer);
+    }
+
 }
