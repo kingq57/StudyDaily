@@ -1,6 +1,8 @@
 package com.lineal.studydaily.twentytwo.november.stream;
 
 import java.util.*;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 /**
  * @description: Stream流测试类01
@@ -23,10 +25,128 @@ public class StreamTest01 {
 
 //        testFlatMap02();
         
-        testMaxAndMin();
+//        testMaxAndMin();
+        
+//        testCollect01();
+//        testCollect02();
+//        testAnyMatch();
+//        testAllMatch();
+//        testNoMatch();
+//        testFindAny();
+//        testFindFirst();
+//        testReduce01();
+//        testReduce02();
+//        testReduce03();
+//        testReduce04();
+
+        test02();
     }
-    
-    
+
+    private static void test02() {
+        final List<Author> authors = getAuthors();
+        authors.stream()
+                .filter(((Predicate<Author>) author -> author.getAge() > 17)
+                        .and(author -> author.getName().length() > 1))
+                .forEach(author -> System.out.println(author.getName()));
+    }
+
+    private static void testReduce04() {
+        final List<Author> authors = getAuthors();
+        authors.stream()
+                .distinct()
+                .map(author -> author.getAge())
+                .reduce((result, element) -> result > element ? element:result)
+                .ifPresent(System.out::println);
+    }
+
+    private static void testReduce03() {
+        final List<Author> authors = getAuthors();
+        System.out.println(authors.stream()
+                .distinct()
+                .map(author -> author.getAge())
+                .reduce(Integer.MAX_VALUE, Math::min));
+    }
+
+    private static void testReduce02() {
+        final List<Author> authors = getAuthors();
+        System.out.println(authors.stream()
+                .distinct()
+                .map(author -> author.getAge())
+                .reduce(Integer.MIN_VALUE, Math::max));
+    }
+
+    private static void testReduce01() {
+        List<Author> authors = getAuthors();
+        final Integer reduce = authors.stream()
+                .distinct()
+                .map(Author::getAge)
+                .reduce(0, Integer::sum);
+        System.out.println(reduce);
+    }
+
+    private static void testFindFirst() {
+        final List<Author> authors = getAuthors();
+        final Optional<Author> first = authors.stream()
+                .sorted(Comparator.comparing(Author::getAge))
+                .findFirst();
+        first.ifPresent(author -> System.out.println(author.getName()));
+    }
+
+    private static void testFindAny() {
+        List<Author> authors = getAuthors();
+        Optional<Author> any = authors.stream()
+                .filter(author -> author.getAge() > 98)
+                .findAny();
+        any.ifPresent(author -> System.out.println(author.getName()));
+    }
+
+    private static void testNoMatch() {
+        final List<Author> authors = getAuthors();
+        System.out.println(authors.stream()
+                .noneMatch(author -> author.getAge() > 100));
+    }
+
+    private static void testAllMatch() {
+        List<Author> authors = getAuthors();
+        boolean b = authors.stream()
+                .allMatch(author -> author.getAge() >= 18);
+        System.out.println(b);
+    }
+
+    private static void testAnyMatch() {
+        List<Author> authors = getAuthors();
+        boolean b = authors.stream()
+                .anyMatch(author -> author.getAge() > 29);
+        System.out.println(b);
+    }
+
+    private static void testCollect02() {
+        // 获取一个map集合，map的key为作者名，value为List<Book>
+        List<Author> authors = getAuthors();
+        Map<String, List<Book>> map = authors.stream()
+                .distinct()
+                .collect(Collectors.toMap(Author::getName, Author::getBooks));
+
+        System.out.println(map);
+    }
+
+    /** 
+     * @description 终结操作collect
+     * @author lineal
+     * @date 2023/1/31 
+     * @param 
+     * @return void
+     **/
+    private static void testCollect01() {
+        List<Author> authors = getAuthors();
+        Set<Book> books = authors.stream()
+                .flatMap(author -> author.getBooks().stream())
+                .collect(Collectors.toSet());
+
+        System.out.println(books);
+    }
+
+
     /** 
      * @description 分别获取这些作家的所出书记的最高分和最低分
      * @author lineal
