@@ -2,13 +2,14 @@ package com.lineal.study.twentytwo.september.mybatisplus;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
-import com.lineal.studydaily.StudyDailyApplication;
+import com.lineal.StudyDailyApplication;
 import com.lineal.studydaily.twentytwo.september.mybatisplus.mapper.UserMapper;
 import com.lineal.studydaily.twentytwo.september.mybatisplus.pojo.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
 

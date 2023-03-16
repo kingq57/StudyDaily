@@ -1,7 +1,7 @@
 package com.lineal.study.twentytwo.september.mybatisplus;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.lineal.studydaily.StudyDailyApplication;
+import com.lineal.StudyDailyApplication;
 import com.lineal.studydaily.twentytwo.september.mybatisplus.mapper.UserMapper;
 import com.lineal.studydaily.twentytwo.september.mybatisplus.pojo.User;
 import org.junit.jupiter.api.Test;
