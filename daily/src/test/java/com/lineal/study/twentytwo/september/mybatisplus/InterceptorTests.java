@@ -1,7 +1,7 @@
 package com.lineal.study.twentytwo.september.mybatisplus;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.lineal.StudyDailyApplication;
+import com.lineal.TestDailyApplication;
 import com.lineal.studydaily.twentytwo.september.mybatisplus.mapper.UserMapper;
 import com.lineal.studydaily.twentytwo.september.mybatisplus.pojo.User;
 import org.junit.jupiter.api.Test;
@@ -16,7 +16,7 @@ import java.util.List;
  * @date: 2022/9/25 22:35
  * @version: 1.0
  */
-@SpringBootTest(classes = StudyDailyApplication.class)
+@SpringBootTest(classes = TestDailyApplication.class)
 public class InterceptorTests {
     @Resource
     private UserMapper userMapper;

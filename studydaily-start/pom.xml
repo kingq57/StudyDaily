@@ -12,14 +12,19 @@
     <artifactId>studydaily-start</artifactId>
 
     <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <dependencies>
         <dependency>
             <groupId>com.lineal</groupId>
             <artifactId>daily</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.lineal</groupId>
+            <artifactId>studydaily-helper</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
