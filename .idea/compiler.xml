@@ -19,6 +19,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="StudyDaily" options="" />
       <module name="daily" options="-parameters" />
       <module name="rabbitmq-study" options="-parameters" />
       <module name="studydaily" options="" />
