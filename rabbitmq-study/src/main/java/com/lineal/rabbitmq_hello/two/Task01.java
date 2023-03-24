@@ -30,7 +30,7 @@ public class Task01 {
          * 4.是否自动删除 最后一个消费者端开连接以后 该对列是否自动删除，true自动删除
          * 5.其它参数，
          * */
-        channel.queueDeclare(QUEUE_NAME, true, false, false, null);
+        channel.queueDeclare(QUEUE_NAME, false, false, false, null);
         // 从控制台当中接收信息
         Scanner scanner = new Scanner(System.in);
         while (scanner.hasNext()){
