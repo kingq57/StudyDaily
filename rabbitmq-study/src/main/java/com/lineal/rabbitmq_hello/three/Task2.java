@@ -2,6 +2,7 @@ package com.lineal.rabbitmq_hello.three;
 
 import com.lineal.rabbitmq_hello.utils.RabbitMqUtils;
 import com.rabbitmq.client.Channel;
+import com.rabbitmq.client.MessageProperties;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -27,7 +28,8 @@ public class Task2 {
         Scanner scanner = new Scanner(System.in);
         while (scanner.hasNext()){
             String message = scanner.next();
-            channel.basicPublish("", TASK_QUEUE_NAME, null, message.getBytes(StandardCharsets.UTF_8));
+            // 设置生产者发送消息为持久化消息（要求保存到磁盘上，不仅仅只保存到内存中）
+            channel.basicPublish("", TASK_QUEUE_NAME, MessageProperties.PERSISTENT_TEXT_PLAIN, message.getBytes(StandardCharsets.UTF_8));
             System.out.println("生产者发出消息：" + message);
         }
     }

@@ -34,6 +34,10 @@ public class Work04 {
             * */
             channel.basicAck(delivery.getEnvelope().getDeliveryTag(), false);
         };
+        // 设置不公平分发
+//        channel.basicQos(1);
+        // 预取值是5
+        channel.basicQos(5);
         // 采用手动应答
         boolean autoAck = false;
         channel.basicConsume(TASK_QUEUE_NAME, autoAck, deliverCallback, a->{
